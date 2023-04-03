@@ -28,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
         otext = findViewById(R.id.outputtext);
         itext = findViewById(R.id.inputtext);
 
-        String[] from = {"Pound","Ounce","Ton"};
+        String[] from = {"Pound","Ounce","Ton","Inch","Foot","Yard","Mile","Celsius","Fahrenheit","Kelvin"};
         ArrayAdapter arinput = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,from);
         ispin.setAdapter(arinput);
 
-        String[] to = {"Grams","Kilogram"};
+        String[] to = {"Grams","Kilogram","Centimetres","Kilometres","Celsius","Fahrenheit","Kelvin"};
         ArrayAdapter aroutput = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,to);
         ospin.setAdapter(aroutput);
 
@@ -61,4 +61,34 @@ public class MainActivity extends AppCompatActivity {
             result = value *1000;
             otext.setText(Double.toString(result));
         }
+        else if (ispin.getSelectedItem().toString()== "Inch"&& ospin.getSelectedItem().toString()=="Centimetres") {
+            result = value *2.54;
+            otext.setText(Double.toString(result));
+        }
+        else if (ispin.getSelectedItem().toString()== "Foot"&& ospin.getSelectedItem().toString()=="Centimetres") {
+            result = value *30.48;
+            otext.setText(Double.toString(result));
+        }
+        else if (ispin.getSelectedItem().toString()== "Yard"&& ospin.getSelectedItem().toString()=="Kilometres") {
+            result = value *1.609;
+            otext.setText(Double.toString(result));
+        }
+        else if (ispin.getSelectedItem().toString()== "Celsius"&& ospin.getSelectedItem().toString()=="Fahrenheit") {
+            result = (value*1.8)+32;
+            otext.setText(Double.toString(result));
+        }
+        else if (ispin.getSelectedItem().toString()== "Fahrenheit"&& ospin.getSelectedItem().toString()=="Celsius") {
+            result = (value-32)/1.8;
+            otext.setText(Double.toString(result));
+        }
+        else if (ispin.getSelectedItem().toString()== "Celsius"&& ospin.getSelectedItem().toString()=="Kelvin") {
+            result = value+273.15;
+            otext.setText(Double.toString(result));
+        }
+        else if (ispin.getSelectedItem().toString()== "Kelvin"&& ospin.getSelectedItem().toString()=="Celsius") {
+            result = value - 273.15;
+            otext.setText(Double.toString(result));
+        }
+
+
     }}
